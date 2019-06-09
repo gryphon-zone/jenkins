@@ -1,0 +1,8 @@
+target/
+tmp.txt
+*.iml
+**dependency-reduced-pom.xml
+*.idea
+*.releaseBackup
+release.properties
+.attach_pid*
