@@ -7,7 +7,7 @@ RUN apt update && \
     apt install -y apt-utils && \
     apt upgrade -y && \
     apt dist-upgrade -y && \
-    apt install -y gpg curl && \ # note: these should already be installed by the base image, just wanting to be sure they're there
+    apt install -y gpg curl && \
     apt autoremove -y && \
     apt autoclean -y && \
     apt clean -y && \
