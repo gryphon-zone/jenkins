@@ -18,7 +18,6 @@ pipeline {
     stages {
         stage('Build and deploy') {
             steps {
-                sh 'chmod a+x docker.sh'
                 sh './docker.sh'
             }
         }
