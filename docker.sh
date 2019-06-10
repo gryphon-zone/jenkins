@@ -12,7 +12,7 @@ fi
 HASH=`git rev-parse --short HEAD`
 
 ORGANIZATION='gryphonzone'
-REPOSITORY='jeknins'
+REPOSITORY='jenkins'
 VERSION="1.0-${HASH}"
 
 TAG="${ORGANIZATION}/${REPOSITORY}:${VERSION}"
