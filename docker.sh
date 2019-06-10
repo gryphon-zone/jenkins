@@ -11,7 +11,7 @@ fi
 
 HASH=`git rev-parse --short HEAD`
 
-ORGANIZATION='chieftyrol'
+ORGANIZATION='gryphonzone'
 REPOSITORY='jeknins'
 VERSION="1.0-${HASH}"
 
