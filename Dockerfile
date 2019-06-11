@@ -14,7 +14,7 @@ RUN apt update && \
     rm -rv /var/cache/apt/archives/* && \
     rm -rf /var/lib/apt/lists/* && \
     curl -fsSL https://get.docker.com | sh && \
-    usermod -aG docker jenkins # let jenkins user run docker without sudo
+    usermod -aG docker jenkins
 
 # drop back to the regular jenkins user
 USER jenkins
