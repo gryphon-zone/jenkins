@@ -22,8 +22,10 @@ pipeline {
     stages {
         stage('Build and deploy') {
             steps {
-                sh "docker login -u ${DOCKER_CREDENTIALS_USR} -p ${DOCKER_CREDENTIALS_PSW}"
-                sh './docker.sh'
+                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
+                    sh "echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin"
+                    sh './docker.sh'
+                }
             }
         }
     }
