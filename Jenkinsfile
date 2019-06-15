@@ -16,9 +16,9 @@ pipeline {
         disableConcurrentBuilds()
         disableResume()
         timeout(activity: true, time: 20)
-        timestamps()
         durabilityHint 'PERFORMANCE_OPTIMIZED'
         ansiColor('gnome-terminal')
+        timestamps()
     }
 
     triggers {
