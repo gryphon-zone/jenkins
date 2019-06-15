@@ -12,7 +12,7 @@ pipeline {
     }
 
     options {
-        buildDiscarder logRotator(daysToKeepStr: '1', numToKeepStr: '10')
+        buildDiscarder logRotator(daysToKeepStr: '30', numToKeepStr: '100')
         disableConcurrentBuilds()
         disableResume()
         timeout(activity: true, time: 20)
