@@ -17,7 +17,7 @@ pipeline {
         disableResume()
         timeout(activity: true, time: 20)
         durabilityHint 'PERFORMANCE_OPTIMIZED'
-        ansiColor('gnome-terminal')
+        ansiColor('xterm')
         timestamps()
     }
 
