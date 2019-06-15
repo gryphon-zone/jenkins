@@ -1,16 +1,5 @@
 pipeline {
 
-    agent {
-        docker {
-            image 'gryphonzone/docker-cli'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
-
-    environment {
-        DOCKER_CREDENTIALS = credentials('docker')
-    }
-
     options {
         timestamps()
         ansiColor('xterm')
@@ -23,6 +12,17 @@ pipeline {
 
     triggers {
         cron '@daily'
+    }
+
+    agent {
+        docker {
+            image 'gryphonzone/docker-cli'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+
+    environment {
+        DOCKER_CREDENTIALS = credentials('docker')
     }
 
     stages {
