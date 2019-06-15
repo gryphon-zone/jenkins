@@ -12,20 +12,29 @@ pipeline {
     }
 
     options {
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '1', numToKeepStr: '10')
+        buildDiscarder logRotator(daysToKeepStr: '1', numToKeepStr: '10')
         disableConcurrentBuilds()
         disableResume()
         timeout(activity: true, time: 20)
         timestamps()
+        durabilityHint 'PERFORMANCE_OPTIMIZED'
+        ansiColor('gnome-terminal')
+    }
+
+    triggers {
+        cron '@daily'
     }
 
     stages {
-        stage('Build and deploy') {
+        stage ('Docker login') {
             steps {
-                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
-                    sh "echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin"
-                    sh './docker.sh'
-                }
+                sh "echo \"${DOCKER_CREDENTIALS_PSW}\" | docker login -u \"${DOCKER_CREDENTIALS_USR}\" --password-stdin"
+            }
+        }
+
+        stage('Build and deploy Docker image') {
+            steps {
+                sh './docker.sh'
             }
         }
     }
