@@ -12,13 +12,13 @@ pipeline {
     }
 
     options {
+        timestamps()
+        ansiColor('xterm')
         buildDiscarder logRotator(daysToKeepStr: '30', numToKeepStr: '100')
         disableConcurrentBuilds()
         disableResume()
         timeout(activity: true, time: 20)
         durabilityHint 'PERFORMANCE_OPTIMIZED'
-        ansiColor('xterm')
-        timestamps()
     }
 
     triggers {
