@@ -1,8 +1,10 @@
 target/
-tmp.txt
-*.iml
-**dependency-reduced-pom.xml
-*.idea
-*.releaseBackup
 release.properties
 .attach_pid*
+tmp.*
+*dependency-reduced-pom.xml
+*.iml
+*.idea
+*.releaseBackup
+*.versionsBackup
+*.bak
