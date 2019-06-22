@@ -12,44 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pipeline {
+@Library('gryphon-zone/pipeline-shared-library@master') _
 
-    options {
-        timestamps()
-        ansiColor('xterm')
-        buildDiscarder logRotator(daysToKeepStr: '30', numToKeepStr: '100')
-        disableConcurrentBuilds()
-        disableResume()
-        timeout(activity: true, time: 20)
-        durabilityHint 'PERFORMANCE_OPTIMIZED'
-    }
+dockerImagePipeline('gryphon-zone') {
 
-    triggers {
-        cron '@daily'
-    }
+    // run build daily
+    jobProperties([pipelineTriggers([cron('@daily')])])
 
-    agent {
-        docker {
-            image 'gryphonzone/docker-cli'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
-
-    environment {
-        DOCKER_CREDENTIALS = credentials('docker')
-    }
-
-    stages {
-        stage ('Docker login') {
-            steps {
-                sh "echo \"${DOCKER_CREDENTIALS_PSW}\" | docker login -u \"${DOCKER_CREDENTIALS_USR}\" --password-stdin"
-            }
-        }
-
-        stage('Build and deploy Docker image') {
-            steps {
-                sh './docker.sh'
-            }
-        }
-    }
 }
