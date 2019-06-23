@@ -1,5 +1,3 @@
-FROM jenkins/jenkins:lts
-
 # Copyright 2019-2019 Gryphon Zone
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +10,9 @@ FROM jenkins/jenkins:lts
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# File based on documentation from https://github.com/jenkinsci/docker/blob/master/README.md
+FROM jenkins/jenkins:lts
 
 # switch to root for installing packages
 USER root
@@ -31,3 +32,7 @@ RUN apt update && \
 
 # drop back to the regular jenkins user
 USER jenkins
+
+# Configure executors
+# https://github.com/jenkinsci/docker/blob/master/README.md#setting-the-number-of-executors
+COPY configuration/executors.groovy /usr/share/jenkins/ref/init.groovy.d/
