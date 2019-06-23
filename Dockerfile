@@ -38,6 +38,9 @@ USER jenkins
 COPY configuration/plugins.txt /usr/share/jenkins/ref/
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
+# Disable installation of plugins during setup wizard
+COPY configuration/disable-plugin-install-wizard.groovy /usr/share/jenkins/ref/init.groovy.d/
+
 # Configure executors
 # https://github.com/jenkinsci/docker/blob/master/README.md#setting-the-number-of-executors
 COPY configuration/executors.groovy /usr/share/jenkins/ref/init.groovy.d/
