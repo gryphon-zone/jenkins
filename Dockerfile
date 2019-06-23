@@ -33,6 +33,11 @@ RUN apt update && \
 # drop back to the regular jenkins user
 USER jenkins
 
+# Pre-install desired plugins
+# https://github.com/jenkinsci/docker/blob/master/README.md#script-usage
+COPY configuration/plugins.txt /usr/share/jenkins/ref/
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
 # Configure executors
 # https://github.com/jenkinsci/docker/blob/master/README.md#setting-the-number-of-executors
 COPY configuration/executors.groovy /usr/share/jenkins/ref/init.groovy.d/
