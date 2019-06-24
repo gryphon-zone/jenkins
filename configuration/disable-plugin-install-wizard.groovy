@@ -63,7 +63,7 @@ class SkipPluginInstallStepStateFilter extends InstallStateFilter {
          * so bypassing it appears to be safe currently, however that could change the future and this hack could
          * cause the installer to break
          */
-        if (Objects.equals(proposedNext.name(), InstallState.NEW.name())) {
+        if (Objects.equals(name(proposedNext), name(InstallState.NEW))) {
             next = InstallState.CREATE_ADMIN_USER
         } else {
             next = proposedNext
