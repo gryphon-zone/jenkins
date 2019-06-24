@@ -7,7 +7,6 @@ docker-plugin
 embeddable-build-status
 github-branch-source
 junit
-matrix-auth
 parameterized-trigger
 pipeline-github-lib
 role-strategy
