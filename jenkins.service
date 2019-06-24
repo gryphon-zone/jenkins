@@ -1,5 +1,5 @@
 [Unit]
-Description=Xanathar Container
+Description=Jenkins CI Platform
 After=docker.service
 Requires=docker.service
  
