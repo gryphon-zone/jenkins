@@ -44,3 +44,6 @@ COPY configuration/disable-plugin-install-wizard.groovy /usr/share/jenkins/ref/i
 # Configure executors
 # https://github.com/jenkinsci/docker/blob/master/README.md#setting-the-number-of-executors
 COPY configuration/executors.groovy /usr/share/jenkins/ref/init.groovy.d/
+
+# Configure security for the instance
+COPY configuration/setup-default-security.groovy /usr/share/jenkins/ref/init.groovy.d/
