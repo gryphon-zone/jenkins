@@ -7,7 +7,7 @@ docker-plugin
 embeddable-build-status
 github-branch-source
 junit
-parameterized-trigger
+parameterized-scheduler
 pipeline-github-lib
 role-strategy
 simple-theme-plugin
