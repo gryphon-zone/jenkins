@@ -1,5 +1,6 @@
 ansicolor
 authorize-project
+basic-branch-build-strategies
 build-timeout
 buildtriggerbadge
 credentials-binding
