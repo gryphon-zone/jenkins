@@ -36,5 +36,5 @@ When booted for the first time, the Jenkins instance will apply the following se
 1. Give the default `admin` user administrative privileges over the instance
 
 It is recommended that after logging in for the first time, you create a new user with administrative privileges,
-and then delete the default `admin` user, to reduce the feasibility of a brute-force password attack.
-  
+and then delete the default `admin` user.
+
