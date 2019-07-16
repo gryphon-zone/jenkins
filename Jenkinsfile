@@ -18,6 +18,7 @@ dockerMultiImagePipeline('gryphon-zone') {
 
     images([
             {
+                artifact 'jenkins'
                 dockerfile 'server/Dockerfile'
 
             }
