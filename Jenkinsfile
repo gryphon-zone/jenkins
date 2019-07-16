@@ -19,7 +19,7 @@ dockerMultiImagePipeline('gryphon-zone') {
     images([
             {
                 artifact 'jenkins'
-                dockerfile 'server/Dockerfile'
+                dockerfile 'server with spaces/Dockerfile'
 
             }
 
