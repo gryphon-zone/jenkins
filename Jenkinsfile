@@ -12,11 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Library('gryphon-zone/pipeline-shared-library@master') _
+@Library('gryphon-zone/pipeline-shared-library@multi') _
 
-dockerImagePipeline('gryphon-zone') {
+dockerMultiImagePipeline('gryphon-zone') {
 
-    // run build daily
-    jobProperties([pipelineTriggers([cron('@daily')])])
+    images([
+            {
+                dockerfile 'server/Dockerfile'
+
+            }
+
+    ])
+
 
 }
