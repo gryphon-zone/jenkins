@@ -16,6 +16,8 @@
 
 dockerMultiImagePipeline('gryphon-zone') {
 
+    deployableBranchRegex 'patch-multi'
+
     images([
             {
                 artifact 'jenkins'
