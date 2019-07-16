@@ -20,17 +20,15 @@ dockerMultiImagePipeline('gryphon-zone') {
             {
                 artifact 'jenkins'
                 dockerfile 'server/Dockerfile'
-
             },
             {
                 artifact 'jenkins-agent'
                 dockerfile 'executors/docker/Dockerfile'
-
             },
             {
                 artifact 'java'
                 dockerfile 'agents/java/Dockerfile'
-
+                additionalTags(['11-jdk'])
             }
 
     ])
