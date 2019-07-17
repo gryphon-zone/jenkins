@@ -16,21 +16,23 @@
 
 dockerMultiImagePipeline('gryphon-zone') {
 
-    deployableBranchRegex 'patch-multi'
-
     images([
             {
                 artifact 'jenkins'
                 dockerfile 'server/Dockerfile'
             },
             {
-                artifact 'jenkins-agent'
+                artifact 'jenkins-node-docker'
                 dockerfile 'nodes/docker/Dockerfile'
             },
             {
-                artifact 'java'
+                artifact 'jenkins-build-agent-maven'
                 dockerfile 'agents/java/Dockerfile'
-                additionalTags(['11-jdk'])
+                additionalTags(['java-11'])
+            },
+            {
+                artifact 'jenkins-build-agent-docker'
+                dockerfile 'agents/docker/Dockerfile'
             }
 
     ])
