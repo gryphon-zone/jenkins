@@ -16,6 +16,11 @@
 
 dockerMultiImagePipeline('gryphon-zone') {
 
+    // rebuild images daily to pick up any OS security patches
+    jobProperties([
+            pipelineTriggers([cron('@daily')])
+    ])
+
     images([
             {
                 artifact 'jenkins'
