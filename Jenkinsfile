@@ -25,7 +25,7 @@ dockerMultiImagePipeline('gryphon-zone') {
             },
             {
                 artifact 'jenkins-agent'
-                dockerfile 'executors/docker/Dockerfile'
+                dockerfile 'nodes/docker/Dockerfile'
             },
             {
                 artifact 'java'
