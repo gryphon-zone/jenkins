@@ -14,9 +14,25 @@
  */
 @Library('gryphon-zone/pipeline-shared-library@master') _
 
-dockerImagePipeline('gryphon-zone') {
+dockerMultiImagePipeline('gryphon-zone') {
 
-    // run build daily
-    jobProperties([pipelineTriggers([cron('@daily')])])
+    deployableBranchRegex 'patch-multi'
+
+    images([
+            {
+                artifact 'jenkins'
+                dockerfile 'server/Dockerfile'
+            },
+            {
+                artifact 'jenkins-agent'
+                dockerfile 'nodes/docker/Dockerfile'
+            },
+            {
+                artifact 'java'
+                dockerfile 'agents/java/Dockerfile'
+                additionalTags(['11-jdk'])
+            }
+
+    ])
 
 }
