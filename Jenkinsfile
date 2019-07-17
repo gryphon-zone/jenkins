@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Library('gryphon-zone/pipeline-shared-library@multi') _
+@Library('gryphon-zone/pipeline-shared-library@master') _
 
 dockerMultiImagePipeline('gryphon-zone') {
 
