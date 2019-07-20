@@ -4,13 +4,16 @@ After=docker.service
 Requires=docker.service
  
 [Service]
-TimeoutStartSec=0
+RestartSec=10
+TimeoutStartSec=infinity
+TimeoutStopSec=60
 Restart=always
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=-/usr/bin/docker stop --time 30 %n
+ExecStartPre=-/usr/bin/docker rm --force %n
 ExecStartPre=/usr/bin/docker pull gryphonzone/jenkins:latest
 ExecStart=/usr/bin/docker run --name %n -u root --rm -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock gryphonzone/jenkins:latest
- 
+ExecStop=/usr/bin/docker stop --time 30 %n
+
 [Install]
 WantedBy=multi-user.target
 
