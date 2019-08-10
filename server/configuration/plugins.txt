@@ -7,6 +7,7 @@ credentials-binding
 docker-plugin
 embeddable-build-status
 github-branch-source
+jacoco
 junit
 parameterized-scheduler
 pipeline-github-lib
