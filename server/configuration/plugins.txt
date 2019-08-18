@@ -11,6 +11,7 @@ github-branch-source
 jacoco
 junit
 parameterized-scheduler
+percentage-du-node-column
 pipeline-github-lib
 role-strategy
 simple-theme-plugin
