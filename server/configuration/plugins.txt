@@ -3,6 +3,7 @@ authorize-project
 basic-branch-build-strategies
 build-timeout
 buildtriggerbadge
+cloudbees-disk-usage-simple
 credentials-binding
 docker-plugin
 embeddable-build-status
