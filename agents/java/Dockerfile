@@ -17,7 +17,7 @@ ARG group=agent
 ARG uid=1000
 ARG gid=1000
 ARG home=/home/agent
-ARG mavenVersion=3.6.1
+ARG mavenVersion=3.6.2
 ARG mavenMirror=http://www.apache.org/dist
 
 USER root
