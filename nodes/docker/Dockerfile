@@ -21,7 +21,7 @@ RUN apt update && \
     apt install -y apt-utils && \
     apt upgrade -y && \
     apt dist-upgrade -y && \
-    apt install -y gnupg-agent curl git bash && \
+    apt install -y gnupg-agent curl git bash tree && \
     apt autoremove -y && \
     apt autoclean -y && \
     apt clean -y && \
