@@ -10,15 +10,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-FROM openjdk:11-jdk
+FROM maven:3-jdk-11
 
 ARG user=agent
 ARG group=agent
 ARG uid=1000
 ARG gid=1000
 ARG home=/home/agent
-ARG mavenVersion=3.6.2
-ARG mavenMirror=http://www.apache.org/dist
 
 USER root
 
@@ -26,18 +24,12 @@ RUN apt update && \
     apt install -y apt-utils && \
     apt upgrade -y && \
     apt dist-upgrade -y && \
-    apt install -y git curl bash tar && \
+    apt install -y git curl bash tar tree && \
     apt autoremove -y && \
     apt autoclean -y && \
     apt clean -y && \
     rm -rv /var/cache/apt/archives/* && \
     rm -rf /var/lib/apt/lists/* && \
-    curl -sS --fail ${mavenMirror}/maven/maven-3/${mavenVersion}/binaries/apache-maven-${mavenVersion}-bin.tar.gz -o /tmp/maven.tar.gz && \
-    tar -xf /tmp/maven.tar.gz --directory /tmp && \
-    rm -fv /tmp/maven.tar.gz && \
-    mv -v /tmp/apache-maven-${mavenVersion} /usr/lib && \
-    ln -s /usr/lib/apache-maven-${mavenVersion}/bin/mvn /usr/bin/mvn && \
-    ln -s /usr/lib/apache-maven-${mavenVersion}/bin/mvnDebug /usr/bin/mvnDebug && \
     mkdir -p $home && \
     chown ${uid}:${gid} $home && \
     groupadd -g ${gid} ${group} && \
